@@ -4,17 +4,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 $is_auth = rand(0, 1);
 $user_name = 'Юрий'; // укажите здесь ваше имя
-?>
 
-<?php $categories = [
+$categories = [
     'boards' => "Доски и лыжи",
     'attachment' => "Крепления",
     'boots' => "Ботинки",
     'clothing' => "Одежда",
     'tools' => "Инструменты",
     'other' => "Разное"
-]; ?>
-<?php $lots = [
+];
+
+$lots = [
     [
         'name' => '2014 Rossignol District Snowboard',
         'category' => 'Доски и лыжи',
@@ -51,9 +51,9 @@ $user_name = 'Юрий'; // укажите здесь ваше имя
         'price' => '5400',
         'url_img' => 'img/lot-6.jpg'
     ]
-];  ?>
+];
 
-<?php function formatting_number($price){
+function formatting_number($price){
     $price = ceil($price);
     if ($price >= 1000){
         $price = number_format($price, 0, ',', ' ');
@@ -87,9 +87,9 @@ $user_name = 'Юрий'; // укажите здесь ваше имя
         <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-           <?php if($is_auth == 1):?>
+           <?php if($is_auth === 1):?>
             <div class="user-menu__logged">
-                <p><?php $user_name; ?></p>
+                <p><?=$user_name;?></p>
                 <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
                 <a class="user-menu__logout" href="#">Выход</a>
             </div>
