@@ -2,6 +2,8 @@
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+require('helpers.php');
+
 $is_auth = rand(0, 1);
 $user_name = 'Юрий'; // укажите здесь ваше имя
 
@@ -68,7 +70,9 @@ $content = include_template('index.php',   [
 $layout = include_template('layout.php',   [
     'content' => $content,
     'user_name' => $user_name,
-    'title' => 'Главная'
+    'title' => 'Главная',
+    'is_auth' => $is_auth,
+    'categories' => $categories
 ]);
 print ($layout);
 ?>
