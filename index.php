@@ -7,6 +7,10 @@ require('helpers.php');
 $is_auth = rand(0, 1);
 $user_name = 'Юрий'; // укажите здесь ваше имя
 
+//data_default_timezone_set("Europe/Moscow");
+setlocale(LC_ALL, 'ru_RU');
+$dt = strtotime("tomorrow midnight") - strtotime('now');
+
 $categories = [
     'boards' => "Доски и лыжи",
     'attachment' => "Крепления",
@@ -65,7 +69,8 @@ function formatting_number($price){
 }
 $content = include_template('index.php',   [
     'categories' => $categories,
-    'lots' => $lots
+    'lots' => $lots,
+    'dt' => $dt
 ]);
 $layout = include_template('layout.php',   [
     'content' => $content,
