@@ -27,9 +27,15 @@
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?=formatting_number($value['price']);?></span>
                         </div>
+                    <?php if($dt > 3600):?>
                         <div class="lot__timer timer">
-                            12:23
+                            <?=date('H:i', $dt);?>
                         </div>
+                    <?php else:?>
+                        <div class="lot__timer timer timer--finishing">
+                            <?=date('H:i', $dt);?>
+                        </div>
+                    <?php endif;?>
                     </div>
                 </div>
             </li>
