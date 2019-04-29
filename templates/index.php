@@ -17,25 +17,23 @@
         <?php foreach($lots as $key => $value): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=htmlspecialchars($value['url_img']);?>" width="350" height="260" alt="">
+                    <img src="<?=$value['url_img'];?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"></span><span><?=htmlspecialchars($value['category'])?></span>
+                    <span class="lot__category"></span><span><?=$value['category']?></span>
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=htmlspecialchars($value['name']);?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?=formatting_number($value['price']);?></span>
                         </div>
-                    <?php if($dt > 3600):?>
-                        <div class="lot__timer timer">
-                            <?=date('H:i', $dt);?>
+                        <div class="lot__timer timer
+                            <?php if($timer <= 3600):?>
+                                timer--finishing
+                            <?php endif;?>"
+                        >
+                            <?=date('H:i', $timer);?>
                         </div>
-                    <?php else:?>
-                        <div class="lot__timer timer timer--finishing">
-                            <?=date('H:i', $dt);?>
-                        </div>
-                    <?php endif;?>
                     </div>
                 </div>
             </li>

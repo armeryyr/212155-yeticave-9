@@ -7,9 +7,9 @@ require('helpers.php');
 $is_auth = rand(0, 1);
 $user_name = 'Юрий'; // укажите здесь ваше имя
 
-//data_default_timezone_set("Europe/Moscow");
+date_default_timezone_set('Europe/Samara');
 setlocale(LC_ALL, 'ru_RU');
-$dt = strtotime("tomorrow midnight") - strtotime('now');
+$timer = strtotime("tomorrow midnight") - strtotime('now');
 
 $categories = [
     'boards' => "Доски и лыжи",
@@ -64,13 +64,13 @@ function formatting_number($price){
     if ($price >= 1000){
         $price = number_format($price, 0, ',', ' ');
     }
-    $price= $price . " " . "₽";
+    $price= $price . " " . '<b class="rub">р</b>';
     return $price;
 }
 $content = include_template('index.php',   [
     'categories' => $categories,
     'lots' => $lots,
-    'dt' => $dt
+    'timer' => $timer
 ]);
 $layout = include_template('layout.php',   [
     'content' => $content,
