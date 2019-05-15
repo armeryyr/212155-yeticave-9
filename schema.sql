@@ -17,24 +17,29 @@ CREATE TABLE lots (
   price_initial INT NOT NULL,
   data_end TIMESTAMP NOT NULL,
   step_rate INT NOT NULL,
-  category VARCHAR(128) NOT NULL,
-  user_id INT UNSIGNED NOT NULL
+  user_id INT UNSIGNED NOT NULL,
+  cat_id INT UNSIGNED NOT NULL,
+  user_winner_id INT UNSIGNED,
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  FOREIGN KEY (cat_id) REFERENCES categories(cat_id),
+  FOREIGN KEY (user_winner_id) REFERENCES user(user_winner_id)
 );
 CREATE TABLE rate (
   id INT AUTO_INCREMENT PRIMARY KEY,
   date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   price_user INT NOT NULL,
   user_id INT UNSIGNED NOT NULL,
-  lot_id INT UNSIGNED NOT NULL
+  lot_id INT UNSIGNED NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  FOREIGN KEY (lot_id) REFERENCES lots(lot_id)
 );
 CREATE TABLE user (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT UNSIGNED NOT NULL,
   date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  user_name VARCHAR(128) NOT NULL,
   email VARCHAR(128) NOT NULL UNIQUE,
   password VARCHAR(64) NOT NULL,
-  avatar VARCHAR(128) NOT NULL,
-  contact VARCHAR(128) NOT NULL,
-  lot_id INT UNSIGNED NOT NULL,
-  rate_id  INT UNSIGNED NOT NULL
+  avatar VARCHAR(128),
+  contact VARCHAR(256) NOT NULL
 );
+
