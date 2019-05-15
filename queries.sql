@@ -35,5 +35,5 @@ VALUES
 
 
 SELECT * FROM categories;
-SELECT name, lots.price_initial, categories.name, img FROM lots JOIN categories;
+
 
