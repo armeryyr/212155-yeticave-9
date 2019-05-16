@@ -42,4 +42,3 @@ CREATE TABLE user (
   avatar VARCHAR(128),
   contact VARCHAR(256) NOT NULL
 );
-
