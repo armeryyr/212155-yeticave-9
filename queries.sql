@@ -30,7 +30,7 @@ VALUES
 INSERT INTO rate
 (date_creation, price_user, user_id, lot_id)
 VALUES
-  ('2019-05-07','10999', '2', '1'),
+  ('2019-05-07','159999', '2', '2'),
   ('2019-05-07','8200', '1', '3');
 
 
